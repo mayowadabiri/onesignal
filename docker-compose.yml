@@ -11,3 +11,19 @@ services:
     environment:
       - PORT=1112
       - NODE_ENV=development
+    depends_on:
+      - messaging_db
+  messaging_db:
+    container_name: messaging_db
+    image: "postgres:12"
+    ports:
+        - "5432:5432"
+    environment:
+        - POSTGRES_USER=Abiodun
+        - POSTGRES_PASSWORD=12345
+        - POSTGRES_DB=oneroute-messaging_db
+    volumes:
+        - nps_data:/var/lib/postgresql/data
+
+volumes:
+  nps_data: {}
