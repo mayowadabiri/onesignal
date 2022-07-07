@@ -43,6 +43,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("views"));
 
 // Import all routes
+const { messagingRouter } = require("./routes/messaging");
 
 // jobs should only run in production environment
 
@@ -57,6 +58,7 @@ app.get("/api/v1/home", (req, res) => {
 });
 
 //   Routes Middleware
+app.use("/api/v1/messaging", messagingRouter);
 
 // Unhandled Routes
 app.all("*", (req, res) => {
