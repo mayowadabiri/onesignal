@@ -3,7 +3,7 @@ const {
   errorResMsg,
   redirect,
 } = require("../utils/libs/response");
-const MessagingService = require("../services/messaging.service");
+const MessagingService = require("../services/messaging.services");
 
 class MessagingController {
   async setupConnection(req, res) {}
