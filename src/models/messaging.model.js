@@ -26,10 +26,10 @@ const User = db.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
+  },
+  {
+    timestamps: true,
   }
-  // {
-  //   timestamps: true,
-  // }
 );
 
 module.exports = User;
