@@ -3,7 +3,7 @@ version: '3.8'
 services:
   messaging_backend:
     container_name: oneroute-messaging
-    image: oneroute-messaging:0.0.2
+    image: oneroute-messaging:0.0.3
     build:
       context: .
     ports:
@@ -12,8 +12,8 @@ services:
       - PORT=1112
       - NODE_ENV=development
       - PG_DATABASE=oneroute-messaging_db
-      - PG_USER=postgres
-      - PG_PASSWORD=alao1996
+      - PG_USER=Abiodun
+      - PG_PASSWORD=12345
       - PG_HOST=messaging_db
     depends_on:
       - messaging_db

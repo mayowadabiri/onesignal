@@ -12,8 +12,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // if (process.env.NODE_ENV === "production") {
-//   process.env.PAYERCOINS_ACCESS_TOKEN_SECRET = key(64);
-//   process.env.PAYERCOINS_COOKIE_SECRET = key(64);
+//   process.env.ONEROUTE_ACCESS_TOKEN_SECRET = key(64);
+//   process.env.ONEROUTE_COOKIE_SECRET = key(64);
 // }
 
 const app = express();
@@ -43,7 +43,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("views"));
 
 // Import all routes
-const { messagingRouter } = require("./routes/messaging");
+const { messagingRouter } = require("./routes/messaging.route");
 
 // jobs should only run in production environment
 
