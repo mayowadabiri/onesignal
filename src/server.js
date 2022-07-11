@@ -37,17 +37,12 @@ const port = normalizePort(process.env.PORT || "8888");
  */
 
 // create a http server and  Database Connection
-db.sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
-    app.listen(port, async () => {
-      console.log(`Server started on port ${port}`);
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+
+const server = app.listen(port, async () => {
+  const address = server.address();
+  const bind = typeof address === "string" ? `pipe ${address}` : `port ${port}`;
+  console.log(`Listening on ${bind}`);
+});
 
 // Catching Exceptions
 
