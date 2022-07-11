@@ -1,4 +1,4 @@
-const Messaging = require("../models/messaging.model");
+const Messaging = require("../models/messaging");
 const { messagesCheck } = require("../utils/libs/messagingAxiosCall");
 
 class MessagingService {
@@ -6,7 +6,14 @@ class MessagingService {
 
   async sendAndRecieveMessage(data) {}
 
-  async listAllMessagesForBothParties(data) {}
+  async listAllMessagesForBothParties() {
+    try {
+      const messages = await Messaging.findAll();
+      return messages;
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 module.exports = new MessagingService();
