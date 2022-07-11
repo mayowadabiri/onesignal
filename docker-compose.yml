@@ -11,9 +11,9 @@ services:
     environment:
       - PORT=1112
       - NODE_ENV=development
-      - PG_DATABASE=oneroute-messaging_db
-      - PG_USER=Abiodun
-      - PG_PASSWORD=12345
+      - DATABASE=oneroute-messaging_db
+      - DB_USERNAME=postgres
+      - PASSWORD=alao1996
       - PG_HOST=messaging_db
     depends_on:
       - messaging_db

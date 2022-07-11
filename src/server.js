@@ -1,4 +1,4 @@
-// const db = require("./models/index"); // import all models
+const db = require("./models/index"); // import all models
 require("dotenv").config();
 
 // UNCAUGHT EXCEPTIONS
@@ -37,17 +37,18 @@ const port = normalizePort(process.env.PORT || "8888");
  */
 
 // create a http server and  Database Connection
-// db.sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log("Connection has been established successfully.");
-//     app.listen(port, async () => {
-//       console.log(`Server started on port ${port}`);
-//     });
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+db.sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+    app.listen(port, async () => {
+      console.log(`Server started on port ${port}`);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
 // Catching Exceptions
 
 // Application does not necessarily need to be crashed
@@ -60,7 +61,7 @@ process.on("unhandledRejection", (err) => {
   });
 });
 
-// process.on("SIGINT", async () => {
-//   await db.sequelize.close();
-//   process.exit(0);
-// });
+process.on("SIGINT", async () => {
+  await db.sequelize.close();
+  process.exit(0);
+});

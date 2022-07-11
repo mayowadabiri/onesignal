@@ -8,8 +8,8 @@ class MessagingService {
 
   async listAllMessagesForBothParties() {
     try {
-      const messages = await Messaging.findAll();
-      return messages;
+      const response = await Messaging.findAll({});
+      return response;
     } catch (error) {
       return error;
     }
