@@ -1,7 +1,15 @@
 const Messaging = require("../models/messaging");
-const { messagesCheck } = require("../utils/libs/messagingAxiosCall");
+const url = require("../utils/libs/axios");
 
 class MessagingService {
+  async setupWebhook(data) {
+    const response = await url.post("/v1/configs/webhook", {
+      ...data,
+    });
+    console.log("360Dialog Response:", response);
+    return response;
+  }
+
   async setupConnection() {}
 
   async sendAndRecieveMessage(data) {}

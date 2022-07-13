@@ -4,19 +4,42 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../database.js")[env];
+require("dotenv").config();
+// const env = process.env.NODE_ENV || "development";
+// const config = require(__dirname + "/../database.js")[env];
+// console.log("config_use_env_variable:", config.use_env_variable);
+// console.log("config", config);
 const db = {};
 
 let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+// if (config.use_env_variable) {
+//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
+// } else {
+//   sequelize = new Sequelize(
+//     config.database,
+//     config.username,
+//     config.password,
+//     config
+//   );
+// }
+
+if (process.env.NODE_ENV === "production") {
+  sequelize = new Sequelize(process.env.DATABASE_URL);
 } else {
   sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
+    process.env.DATABASE || "oneroute-messaging_db",
+    process.env.DB_USERNAME || "postgres",
+    process.env.PASSWORD || "alao1996",
+    {
+      host: process.env.HOST || "localhost",
+      dialect: "postgres",
+      pool: {
+        max: 100,
+        min: 0,
+        idle: 200000,
+        acquire: 1000000,
+      },
+    }
   );
 }
 
