@@ -1,7 +1,7 @@
 const axios = require("axios");
 require("dotenv").config();
 
-const BASEURL = "http://waba.360dialog.io";
+const BASEURL = "https://waba-sandbox.360dialog.io";
 
 const url = axios.create({
   BASEURL,

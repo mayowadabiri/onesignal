@@ -1,4 +1,4 @@
-const db = require("./models/index"); // import all models
+// const db = require("./models/index"); // import all models
 require("dotenv").config();
 
 // UNCAUGHT EXCEPTIONS
@@ -57,6 +57,6 @@ process.on("unhandledRejection", (err) => {
 });
 
 process.on("SIGINT", async () => {
-  await db.sequelize.close();
+  // await db.sequelize.close();
   process.exit(0);
 });
