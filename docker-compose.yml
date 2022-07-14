@@ -14,7 +14,7 @@ services:
       - DATABASE=oneroute-messaging_db
       - DB_USERNAME=postgres
       - PASSWORD=alao1996
-      - PG_HOST=database
+      - HOST=database
     depends_on:
       - database
   database:
