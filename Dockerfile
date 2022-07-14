@@ -12,5 +12,5 @@ RUN npm  install
 
 COPY . . 
 
-CMD ["node", "src/server.js"]
+CMD ["npm", "run", "dev"]
 

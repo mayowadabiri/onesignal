@@ -1,13 +1,19 @@
 const Messaging = require("../models/messaging");
 const url = require("../utils/libs/axios");
+const axiosCall = require("../utils/libs/axiosCall");
+require("dotenv").config();
 
 class MessagingService {
   async setupWebhook(data) {
-    const response = await url.post("/v1/configs/webhook", {
-      ...data,
+    const webhookSet = await axiosCall({
+      method: "post",
+      url: `${process.env.D360_BASE_URL}/v1/configs/webhook`,
+      data: data,
+      headers: {
+        "D360-API-KEY": `${process.env.D360_API_KEY}`,
+      },
     });
-    console.log("360Dialog Response:", response);
-    return response;
+    return webhookSet;
   }
 
   async setupConnection() {}
