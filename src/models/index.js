@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-const fs = require("fs");
-const path = require("path");
-const Sequelize = require("sequelize");
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-require("dotenv").config();
+require('dotenv').config();
 // const env = process.env.NODE_ENV || "development";
 // const config = require(__dirname + "/../database.js")[env];
 // console.log("config_use_env_variable:", config.use_env_variable);
@@ -23,16 +23,16 @@ let sequelize;
 //   );
 // }
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   sequelize = new Sequelize(process.env.DATABASE_URL);
 } else {
   sequelize = new Sequelize(
-    process.env.DATABASE || "oneroute-messaging_db",
-    process.env.DB_USERNAME || "postgres",
-    process.env.PASSWORD || "alao1996",
+    process.env.DATABASE || 'oneroute-messaging_db',
+    process.env.DB_USERNAME || 'postgres',
+    process.env.PASSWORD || 'alao1996',
     {
-      host: process.env.HOST || "localhost",
-      dialect: "postgres",
+      host: process.env.HOST || 'localhost',
+      dialect: 'postgres',
       pool: {
         max: 100,
         min: 0,
@@ -46,16 +46,16 @@ if (process.env.NODE_ENV === "production") {
 (async () => {
   try {
     await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
+    console.log('Connection has been established successfully.');
   } catch (error) {
-    console.error("Unable to connect to the database:", error);
+    console.error('Unable to connect to the database:', error);
   }
 })();
 
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
-      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
+      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
     );
   })
   .forEach((file) => {

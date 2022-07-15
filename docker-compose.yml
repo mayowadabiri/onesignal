@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  app:
-    container_name: messaging_api
-    image: oneroute-messaging:0.0.3
+  messaging_backend:
+    container_name: oneroute-messaging
+    image: oneroute-messaging:0.0.2
     build:
       context: .
     ports:
@@ -11,20 +11,20 @@ services:
     environment:
       - PORT=1112
       - NODE_ENV=development
-      - DATABASE=oneroute-messaging_db
-      - DB_USERNAME=postgres
-      - PASSWORD=alao1996
-      - HOST=database
+      - PG_DATABASE=one-money
+      - PG_USER=postgres
+      - PG_PASSWORD=Dev.Dabiri
+      - PG_HOST=messaging_db
     depends_on:
-      - database
-  database:
+      - messaging_db
+  messaging_db:
     container_name: messaging_db
     image: "postgres:12"
     ports:
         - "5432:5432"
     environment:
-        - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=alao1996
+        - POSTGRES_USER=Abiodun
+        - POSTGRES_PASSWORD=12345
         - POSTGRES_DB=oneroute-messaging_db
     volumes:
         - nps_data:/var/lib/postgresql/data
